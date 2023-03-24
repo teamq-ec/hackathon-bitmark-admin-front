@@ -58,7 +58,7 @@ jobs:
             echo ${SERVER_PASSWORD} | sudo -S tar xzf /tmp/artifacts/${GITHUB_SHA}.tar.gz -C "${{ secrets.DEPLOY_PATH }}/frontend"
             
             # Move dist folder
-            echo ${SERVER_PASSWORD} | sudo -S cp -a "${{ secrets.DEPLOY_PATH }}/frontend/dist/${{ secrets.ANGULAR_APP_NAME }}/." ${{ secrets.DEPLOY_PATH }}/frontend
+            echo ${SERVER_PASSWORD} | sudo -S cp -a "${{ secrets.DEPLOY_PATH }}/frontend/dist/." ${{ secrets.DEPLOY_PATH }}/frontend
             
             # Delete dist folder
             echo ${SERVER_PASSWORD} | sudo -S rm -rf "${{ secrets.DEPLOY_PATH }}/frontend/dist"
