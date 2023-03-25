@@ -47,7 +47,7 @@ export class QuizComponent implements OnInit {
   }
 
   getRandomWords() {
-    for(let i=0; i<2; i++) {//update
+    for(let i=0; i<10; i++) {
       let x = Number((Math.random() * (this.words.length - 1)).toFixed(0));
       this.randomWords.push(this.words[x].word);
     }
