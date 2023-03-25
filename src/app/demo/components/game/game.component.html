@@ -1,0 +1,11 @@
+<div class="content">
+    <div id="sky" class="w-full" [ngClass]="{ 'paused': isPaused }">
+      <div id="sea">
+        <div id="bern"></div>
+        <div id="tube"></div>
+      </div>
+    </div>
+    <div class="actions">
+        <button pButton pRipple type="button" label="Next quiz" (click)="nextQuiz()"></button>
+    </div>
+</div>
