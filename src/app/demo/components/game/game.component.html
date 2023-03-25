@@ -1,7 +1,9 @@
 <div class="content">
     <div id="sky" class="w-full" [ngClass]="{ 'paused': isPaused }">
       <div id="sea">
-        <div id="bern"></div>
+        <div class="jumper" [ngClass]="{ 'is-jumping': isJumping }">
+            <div id="bern"></div>
+        </div>
         <div class="tube-container">
             <div [ngClass]="{ 'tube-hidde': !isFromQuiz }" id="tube"></div>
             <div id="tube"></div>

@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 export class GameComponent implements OnInit {
     isPaused = true;
     isFromQuiz = false;
+    isJumping = false;
 
     constructor(
         private router: Router,
@@ -17,7 +18,19 @@ export class GameComponent implements OnInit {
         this.isPaused = false;
         setTimeout(() => {
             this.isPaused = true;
+            this.jumpAnimation();
         }, 4 * 1000);
+    }
+
+    jumpAnimation() {
+        this.isJumping = true;
+        setTimeout(() => {
+            this.jumpToQuiz();
+        }, 0.5 * 1000);
+    }
+
+    jumpToQuiz() {
+        this.router.navigate(['/quiz']);
     }
 
     ngOnInit() {
