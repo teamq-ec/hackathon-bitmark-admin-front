@@ -1,6 +1,6 @@
 [
   {
-    "context": ["/apiFeedBack/*"],
+    "context": ["/apiFeedBack"],
     "target": "https://bitmark-api.taskbase.com/",
     "secure": false,
     "logLevel": "debug",
@@ -10,7 +10,7 @@
     }
   },
   {
-    "context": ["/api/*"],
+    "context": ["/api"],
     "target": "https://taskpool.taskbase.com/",
     "secure": false,
     "logLevel": "debug",
