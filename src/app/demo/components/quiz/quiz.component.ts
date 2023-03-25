@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, isDevMode } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { TaskpoolService } from '../../service/taskpool.service';
 //declare let talkify: any;
@@ -30,6 +30,7 @@ export class QuizComponent implements OnInit {
     }
 
   ngOnInit() {
+        console.log(isDevMode());
   }
 
   startQuiz() {
