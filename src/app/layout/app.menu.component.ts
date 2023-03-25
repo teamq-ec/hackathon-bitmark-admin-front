@@ -12,7 +12,7 @@ export class AppMenuComponent implements OnInit {
     ngOnInit() {
         this.model = [
             {
-                label: 'UI Kit',
+                label: '',
                 icon: 'pi pi-fw pi-star-fill',
                 items: [
                     {
