@@ -1,7 +1,7 @@
 import { Component, OnInit, isDevMode } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { TaskpoolService } from '../../service/taskpool.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-quiz',
   templateUrl: './quiz.component.html',
@@ -18,12 +18,12 @@ export class QuizComponent implements OnInit {
     quizStarted: boolean = false;
     isLoading: boolean = false;
     progress: number = 0;
-    showAnswer: boolean = false;
+    showAnswer: boolean = true;
 
-    constructor(private taskpoolService: TaskpoolService,
-      private messageService: MessageService,) {
-
-    }
+    constructor(
+      private taskpoolService: TaskpoolService,
+      private messageService: MessageService,
+      private router:Router){ }
 
   ngOnInit() {
   }
@@ -78,7 +78,6 @@ export class QuizComponent implements OnInit {
     }
     this.showAnswer = true;
 
-    this.quizStarted = false;
     this.saveQuizLocalStorage()
   }
 
@@ -100,5 +99,9 @@ export class QuizComponent implements OnInit {
     }
     value.push(this.quiz);
     localStorage.setItem('quizzes', JSON.stringify(value));
+  }
+
+  goToHome(){
+    window.location.href = "/#/?fromquiz=";
   }
 }
