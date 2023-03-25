@@ -16,7 +16,7 @@
             <div class="col-12">
                 <h3>Choose the correct translation for the following sentences: </h3>
             </div>
-            <div *ngIf="quiz.length === 10; else skeletonQuizzes" style="display: flex; flex-wrap: wrap;">
+            <div *ngIf="quiz.length === qtyQuizzes; else skeletonQuizzes" style="display: flex; flex-wrap: wrap;">
 				<div class="col-12 md:col-6" *ngFor="let question of quiz">
 					<app-question 
 						[question]="question" 
@@ -41,8 +41,11 @@
 				</div>
 			</ng-template>
 			
-            <div class="col-12">
+            <div class="col-12" *ngIf="!showAnswer">
                 <button pButton label="Get results" (click)="getScore()" (disable)="isLoading"></button>
+            </div>
+            <div class="col-12" *ngIf="showAnswer">
+                <button pButton label="Go To Home" (click)="goToHome()" (disable)="isLoading"></button>
             </div>
         </div>
     </div>
