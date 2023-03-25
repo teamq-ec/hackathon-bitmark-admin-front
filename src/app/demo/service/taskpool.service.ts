@@ -12,7 +12,11 @@ export class TaskpoolService {
   ) { }
 
   getWords() {
-    return this.http.get<any>(this.baseUrl + "words?translationPair=de->en");
+    return this.http.get<any>(this.baseUrl + "words?translationPair=de->en", {
+        headers: {
+            'Access-Control-Allow-Origin': '*'
+        },
+    });
   }
 
   getExercise(word: any){
