@@ -18,7 +18,10 @@ import { QuestionComponent } from './question/question.component';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { ToastModule } from 'primeng/toast';
 import { MessageModule } from 'primeng/message';
-
+import { SkeletonModule } from 'primeng/skeleton';
+import { AvatarModule } from 'primeng/avatar';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { ProgressBarModule } from 'primeng/progressbar';
 
 @NgModule({
   declarations: [
@@ -42,6 +45,10 @@ import { MessageModule } from 'primeng/message';
 	QuizRoutingModule,
 	ToastModule,
 	MessageModule,
+	SkeletonModule,
+	AvatarModule,
+	ProgressSpinnerModule,
+	ProgressBarModule
   ]
 })
 export class QuizModule { }
