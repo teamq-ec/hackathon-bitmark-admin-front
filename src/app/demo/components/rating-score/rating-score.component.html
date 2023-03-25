@@ -1,0 +1,22 @@
+<div>
+    <h5>Enter your nickname</h5>
+    <div class="grid formgrid">
+        <form [formGroup]="formGroup" (ngSubmit)="saveScore()">
+            <div class="col-12 mb-2 lg:mb-0">
+                <span class="p-input-icon-left">
+                    <i class="pi pi-user"></i>
+                    <input formControlName="nickname" type="text" pInputText placeholder="Nickname" [(ngModel)]="nickname"/>
+                    <button class="nickname__button ml-4" pButton pRipple type="submit" label="Save" ></button>
+                </span>
+            </div>
+        </form>
+    </div>
+    <div class="rating">
+        <ul class="rating__list">
+            <li class="rating__item" *ngFor="let score of orderedScores">
+                <span class="rating__item__nickname">{{ score.nickname }}</span>
+                <span class="rating__item__score">{{ score.score }}</span>
+            </li>
+        </ul>
+    </div>
+</div>
