@@ -1,7 +1,17 @@
 <div class="card p-fluid">
     <h4><b>{{question.sourceSentence.text}}</b></h4>
-    <div *ngFor="let option of options" class="field-checkbox">
-        <p-radioButton [value]="option.key" [(ngModel)]="selected" (onClick)="setSelected(option.key, question.sourceSentence.text)" ></p-radioButton>
-        <label [for]="option.key">{{ option.sentence }}</label>
+    
+    <div *ngIf="showAnswer; else showOptions">
+        <p>{{question.targetSentence.text}}</p>
+        <audio controls>
+            <source src="{{question?.bitmark?.essay?.resource?.audio?.src}}" type="audio/mpeg">
+        </audio>
     </div>
+
+    <ng-template #showOptions>
+        <div *ngFor="let option of options" class="field-checkbox">
+            <p-radioButton [value]="option.key" [(ngModel)]="selected" (onClick)="setSelected(option.key, question.sourceSentence.text)" ></p-radioButton>
+            <label [for]="option.key">{{ option.sentence }}</label>
+        </div>
+    </ng-template>
 </div>

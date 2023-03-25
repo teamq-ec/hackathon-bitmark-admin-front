@@ -18,6 +18,7 @@ export class QuizComponent implements OnInit {
     quizStarted: boolean = false;
     isLoading: boolean = false;
     progress: number = 0;
+    showAnswer: boolean = false;
 
     constructor(private taskpoolService: TaskpoolService,
       private messageService: MessageService,) {
@@ -75,6 +76,8 @@ export class QuizComponent implements OnInit {
         result.status = 'failed';
         this.messageService.add({ severity: 'error', summary: 'Error', detail: 'You failed' });
     }
+    this.showAnswer = true;
+
     this.quizStarted = false;
     this.saveQuizLocalStorage()
   }

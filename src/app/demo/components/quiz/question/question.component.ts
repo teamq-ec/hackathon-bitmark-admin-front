@@ -9,6 +9,7 @@ import { Component, Input, OnInit, Output, EventEmitter, } from '@angular/core';
 
 export class QuestionComponent implements OnInit {
   @Input() question: any;
+  @Input() showAnswer: any;
 
   @Output() valueResponse = new EventEmitter<any>();
   
