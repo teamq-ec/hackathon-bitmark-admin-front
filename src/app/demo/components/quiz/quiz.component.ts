@@ -30,7 +30,6 @@ export class QuizComponent implements OnInit {
     }
 
   ngOnInit() {
-        console.log(isDevMode());
   }
 
   startQuiz() {
