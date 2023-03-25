@@ -1,7 +1,10 @@
 <div class="flex w-full">
     <div class="quiz-container">
-        <div class="progress-bar">
-            <span style="width: {{progress}}%"></span>
+        <div class="mb-8">
+            <div class="progress-text">{{current + 1}} / {{quiz?.questions?.length || 0}}</div>
+            <div class="progress-bar">
+                <span style="width: {{progress}}%"></span>
+            </div>
         </div>
         <div class="font-bold text-lg">
             Choose the correct translation for the following sentence:
