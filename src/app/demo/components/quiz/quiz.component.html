@@ -1,19 +1,28 @@
-<div class="grid">
-    <p-toast></p-toast>
-	<div class="col-12">
-		<div class="card p-fluid">
-			<h5>Quiz</h5>
-            <button *ngIf="!quizStarted" pButton label="Start quiz" (click)="startQuiz()" (disable)="isLoading" ></button>
-		</div>
-	</div>
-	<div class="col-12">
-		<h3>Translate these sentences to English: </h3>
-	</div>
-	<div class="col-12 md:col-6" *ngFor="let question of quizzes">
-        <!--*ngIf="quizzes.length === 10 && quizStarted"-->
-		<app-question [question]="question" (valueResponse)="setResponse($event)"></app-question>
-	</div>
-    <div class="col-12">
-        <button *ngIf="quizStarted" pButton label="Get results" (click)="getScore()" (disable)="isLoading"></button>
-	</div>
+<div class="flex w-full">
+    <div class="quiz-container">
+        <p-toast></p-toast>
+        <div class="col-12" *ngIf="!quizStarted">
+            <div class="card p-fluid">
+                <button pButton label="Start quiz" (click)="startQuiz()" (disable)="isLoading" ></button>
+            </div>
+        </div>
+        <div *ngIf="quizStarted">
+            <div class="mb-8">
+                <div class="progress-text">{{responses.length}} / {{quiz.length || 0}}</div>
+                <div class="progress-bar">
+                    <span style="width: {{progress}}%"></span>
+                </div>
+            </div>
+            <div class="col-12">
+                <h3>Choose the correct translation for the following sentences: </h3>
+            </div>
+            <div class="col-12 md:col-6" *ngFor="let question of quiz">
+                <!--*ngIf="quizzes.length === 10 && quizStarted"-->
+                <app-question [question]="question" (valueResponse)="setResponse($event)"></app-question>
+            </div>
+            <div class="col-12">
+                <button pButton label="Get results" (click)="getScore()" (disable)="isLoading"></button>
+            </div>
+        </div>
+    </div>
 </div>
