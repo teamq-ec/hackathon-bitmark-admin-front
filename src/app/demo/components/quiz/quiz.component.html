@@ -8,7 +8,7 @@
         </div>
         <div *ngIf="quizStarted">
             <div class="mb-8">
-                <div class="progress-text">{{responses.length}} / {{quiz.length || 0}}</div>
+                <div *ngIf="quiz.length === 10" class="progress-text">{{responses.length}} / {{quiz.length || 0}}</div>
                 <div class="progress-bar">
                     <span style="width: {{progress}}%"></span>
                 </div>
