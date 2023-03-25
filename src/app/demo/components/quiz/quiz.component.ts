@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, isDevMode } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { TaskpoolService } from '../../service/taskpool.service';
 //declare let talkify: any;
@@ -12,12 +12,8 @@ import { TaskpoolService } from '../../service/taskpool.service';
 export class QuizComponent implements OnInit {
     words: any = [];
     randomWords: any = [];
-    quiz: any = [
-      { "sourceSentence": { "text": "Ich trinke, um mich zu entspannen." }, "targetSentence": { "word": "relax", "similarWords": [ "meditate", "breathe", "tranquil", "enjoy", "unwind" ], "text": "I drink to relax." }, "bitmark": { "essay": { "format": "text", "meta": { "language": "de", "learningLanguage": "en", "subject": "relax" }, "feedbackEngine": { "feedbackId": "785e3806680d5f57aed1298dcae95b2d-essay", "userId": "", "timeOnTask": 0 }, "instruction": "Übersetzen Sie den Satz: \"Ich trinke, um mich zu entspannen.\"", "type": "essay", "sampleSolution": "I drink to relax.", "answer": { "text": "" }, "resource": { "type": "audio", "audio": { "format": "mp3", "src": "http://taskpool.taskbase.com/audio/EN-2325142.mp3" } } }, "cloze": null, "multipleChoiceText": null } },
-      { "sourceSentence": { "text": "Heute habe ich Geburtstag." }, "targetSentence": { "word": "birthday", "similarWords": [ "grandchild", "wedding", "gift", "anniversary", "grandma" ], "text": "Today is my birthday." }, "bitmark": { "essay": { "format": "text", "meta": { "language": "de", "learningLanguage": "en", "subject": "birthday" }, "feedbackEngine": { "feedbackId": "0b37f94b304ad48b988e498a9c9de592-essay", "userId": "", "timeOnTask": 0 }, "instruction": "Übersetzen Sie den Satz: \"Heute habe ich Geburtstag.\"", "type": "essay", "sampleSolution": "Today is my birthday.", "answer": { "text": "" }, "resource": { "type": "audio", "audio": { "format": "mp3", "src": "http://taskpool.taskbase.com/audio/EN-985108.mp3" } } }, "cloze": null, "multipleChoiceText": null } },
-      { "sourceSentence": { "text": "Er hat ein bisschen Geld." }, "targetSentence": { "word": "money", "similarWords": [ "cash", "dollar", "debt", "credit", "wealth" ], "text": "He has some money." }, "bitmark": { "essay": { "format": "text", "meta": { "language": "de", "learningLanguage": "en", "subject": "money" }, "feedbackEngine": { "feedbackId": "500558d86c1ff9f541300e9103af4793-essay", "userId": "", "timeOnTask": 0 }, "instruction": "Übersetzen Sie den Satz: \"Er hat ein bisschen Geld.\"", "type": "essay", "sampleSolution": "He has some money.", "answer": { "text": "" }, "resource": { "type": "audio", "audio": { "format": "mp3", "src": "http://taskpool.taskbase.com/audio/EN-31002209094219.mp3" } } }, "cloze": null, "multipleChoiceText": null } },
-      { "sourceSentence": { "text": "Bist du an Musik interessiert?" }, "targetSentence": { "word": "music", "similarWords": [ "jazz", "dance", "song", "folk", "composer" ], "text": "Are you interested in music?" }, "bitmark": { "essay": { "format": "text", "meta": { "language": "de", "learningLanguage": "en", "subject": "music" }, "feedbackEngine": { "feedbackId": "4a22b6fe824f1d6f5a8ce1af66efb88f-essay", "userId": "", "timeOnTask": 0 }, "instruction": "Übersetzen Sie den Satz: \"Bist du an Musik interessiert?\"", "type": "essay", "sampleSolution": "Are you interested in music?", "answer": { "text": "" }, "resource": { "type": "audio", "audio": { "format": "mp3", "src": "http://taskpool.taskbase.com/audio/EN-69629.mp3" } } }, "cloze": null, "multipleChoiceText": null } }
-    ];
+    qtyQuizzes: number = 10;
+    quiz: any = [];
     responses: any = [];
     result: any = {};
     quizStarted: boolean = false;
@@ -47,7 +43,7 @@ export class QuizComponent implements OnInit {
   }
 
   getRandomWords() {
-    for(let i=0; i<2; i++) {//update
+    for(let i=0; i<this.qtyQuizzes; i++) {
       let x = Number((Math.random() * (this.words.length - 1)).toFixed(0));
       this.randomWords.push(this.words[x].word);
     }
