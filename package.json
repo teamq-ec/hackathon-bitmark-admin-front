@@ -26,6 +26,7 @@
     "@fullcalendar/interaction": "^6.0.3",
     "@fullcalendar/timegrid": "^6.0.3",
     "chart.js": "^3.3.2",
+    "export-from-json": "^1.7.2",
     "primeflex": "^3.2.1",
     "primeicons": "6.0.1",
     "primeng": "15.1.1",
