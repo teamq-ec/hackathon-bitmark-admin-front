@@ -14,26 +14,30 @@ import { CascadeSelectModule } from "primeng/cascadeselect";
 import { MultiSelectModule } from "primeng/multiselect";
 import { InputTextareaModule } from "primeng/inputtextarea";
 import { InputTextModule } from "primeng/inputtext";
+import { QuestionComponent } from './question/question.component';
+import { RadioButtonModule } from 'primeng/radiobutton';
 
 
 @NgModule({
   declarations: [
-    QuizComponent
+    QuizComponent,
+    QuestionComponent
   ],
   imports: [
     CommonModule,
-		FormsModule,
-		AutoCompleteModule,
-		CalendarModule,
-		ChipsModule,
-		DropdownModule,
-		InputMaskModule,
-		InputNumberModule,
-		CascadeSelectModule,
-		MultiSelectModule,
-		InputTextareaModule,
-		InputTextModule,
-    QuizRoutingModule
+	FormsModule,
+	AutoCompleteModule,
+	CalendarModule,
+	ChipsModule,
+	DropdownModule,
+	InputMaskModule,
+	InputNumberModule,
+	CascadeSelectModule,
+	MultiSelectModule,
+	InputTextareaModule,
+	InputTextModule,
+	RadioButtonModule,
+	QuizRoutingModule
   ]
 })
 export class QuizModule { }

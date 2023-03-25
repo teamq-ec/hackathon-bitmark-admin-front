@@ -1,0 +1,7 @@
+<div>
+    <h4><b>{{question.sourceSentence.text}}</b></h4>
+    <div *ngFor="let option of question.targetSentence.similarWords" class="field-checkbox">
+        <p-radioButton [value]="option" [(ngModel)]="selected" ></p-radioButton>
+        <label [for]="option">{{ option }}</label>
+    </div>
+</div>
