@@ -1,0 +1,30 @@
+<div class="flex w-full">
+    <div class="quiz-container">
+        <div class="font-bold text-lg mb-4">
+            Summary
+        </div>
+        <div class="text-primary font-bold text-4xl flex justify-content-center">
+            Score: {{score}} / {{total}}
+        </div>
+        <div *ngIf="!wrongAnswers.length" class="text-primary font-bold text-2xl mb-6 flex justify-content-center">
+            WOW! You did great, perfect score!
+        </div>
+        <div *ngIf="wrongAnswers.length">
+            <div class="text-primary font-bold text-2xl mb-6 flex justify-content-center">
+                You can review your incorrect answers here:
+            </div>
+            <details *ngFor="let wrongAnswer of wrongAnswers" class="mb-4">
+                <summary class="font-bold text-lg">{{wrongAnswer.sourceSentence.text}}</summary>
+                <p class="pl-4 pt-2 my-2 text-lg text-red-500">
+                    Your answer: {{wrongAnswer.bitmark.essay.answer.text}}
+                </p>
+                <p class="pl-4 pt-2 my-2 text-lg text-red-500">
+                    {{wrongAnswer.feedback.message}}
+                </p>
+                <p class="pl-4 pt-2 text-lg text-green-500">
+                    Solution: {{wrongAnswer.targetSentence.text}}
+                </p>
+            </details>
+        </div>
+    </div>
+</div>

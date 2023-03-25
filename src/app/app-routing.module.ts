@@ -12,9 +12,9 @@ const routes: Routes = [
         children: [
             { path: '', data: { breadcrumb: '' }, loadChildren: () => import('./demo/components/game/game.module').then(m => m.GameModule) },
             { path: 'login', data: { breadcrumb: '' }, loadChildren: () => import('./demo/components/login/login.module').then(m => m.LoginModule) },
-            { path: 'quiz', data: { breadcrumb: '' }, loadChildren: () => import('./demo/components/quiz/quiz.module').then(m => m.QuizModule) },
             { path: 'mentor', data: { breadcrumb: '' }, loadChildren: () => import('./demo/components/mentor/mentor.module').then(m => m.MentorModule) },
-            { path: 'uikit', data: { breadcrumb: '' }, loadChildren: () => import('./demo/components/uikit/uikit.module').then(m => m.UIkitModule) },
+            { path: 'summary', data: { breadcrumb: '' }, loadChildren: () => import('./demo/components/summary/summary.module').then(m => m.SummaryModule) },
+            { path: 'quiz', data: { breadcrumb: '' }, loadChildren: () => import('./demo/components/quiz/quiz.module').then(m => m.QuizModule) },
         ]
     },
     { path: 'notfound', loadChildren: () => import('./demo/components/notfound/notfound.module').then(m => m.NotfoundModule) },
