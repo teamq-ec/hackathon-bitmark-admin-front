@@ -1,3 +1,18 @@
-<div class="grid">
-	Mentor works
+<div class="flex w-full">
+    <div class="quiz-container">
+        <div class="font-bold text-lg mb-4">
+            Mentor
+        </div>
+        <div *ngIf="quizzes.length">
+            <div class="text-primary font-bold text-2xl mb-6 flex justify-content-center">
+                You can review the quizzes here:
+            </div>
+            <details *ngFor="let quiz of quizzes; let i = index" class="mb-4">
+                <summary class="font-bold text-lg">Quiz {{i + 1}}</summary>
+                <p class="pl-4 pt-2 my-2 text-lg text-red-500">
+                    <p-button label="Download quiz" (click)="downloadQuiz(quiz)" (disable)="isLoading"></p-button>
+                </p>
+            </details>
+        </div>
+    </div>
 </div>

@@ -1,7 +1,6 @@
 import { Component, OnInit, isDevMode } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { TaskpoolService } from '../../service/taskpool.service';
-//declare let talkify: any;
 
 @Component({
   selector: 'app-quiz',
@@ -77,7 +76,7 @@ export class QuizComponent implements OnInit {
         this.messageService.add({ severity: 'error', summary: 'Error', detail: 'You failed' });
     }
     this.quizStarted = false;
-
+    this.saveQuizLocalStorage()
   }
 
   setResponse(value: any) {
@@ -88,5 +87,15 @@ export class QuizComponent implements OnInit {
       this.responses[index] = value;
     }
     this.progress = (this.responses.length)*100/this.quiz.length;
+  }
+
+  saveQuizLocalStorage() {
+    let quizzes = localStorage.getItem('quizzes');
+    let value: any = []
+    if(quizzes) {
+      value = value.concat(JSON.parse(quizzes));
+    }
+    value.push(this.quiz);
+    localStorage.setItem('quizzes', JSON.stringify(value));
   }
 }
