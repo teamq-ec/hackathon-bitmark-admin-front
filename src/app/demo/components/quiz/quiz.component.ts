@@ -1,10 +1,85 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { TaskpoolService } from '../../service/taskpool.service';
+//declare let talkify: any;
 
 @Component({
   selector: 'app-quiz',
   templateUrl: './quiz.component.html',
   styleUrls: ['./quiz.component.scss']
 })
-export class QuizComponent {
+export class QuizComponent implements OnInit {
 
+  selectedState: any = null;
+
+    states: any[] = [
+        {name: 'Arizona', code: 'Arizona'},
+        {name: 'California', value: 'California'},
+        {name: 'Florida', code: 'Florida'},
+        {name: 'Ohio', code: 'Ohio'},
+        {name: 'Washington', code: 'Washington'}
+    ];
+
+    dropdownItems = [
+        { name: 'Option 1', code: 'Option 1' },
+        { name: 'Option 2', code: 'Option 2' },
+        { name: 'Option 3', code: 'Option 3' }
+    ];
+
+    cities1: any[] = [];
+
+    cities2: any[] = [];
+
+    city1: any = null;
+
+    city2: any = null;
+
+    words: any[] = [];
+    
+    randomWords: any[] = [];
+
+    quizzes: any[] = [];
+
+    constructor(private taskpoolService: TaskpoolService) {
+
+    }
+  
+  ngOnInit() {
+    /*talkify.config.remoteService.host = 'https://talkify.net';
+    talkify.config.remoteService.apiKey = 'dab83f1b-55c9-45b0-9625-3862ac11aba3';
+    talkify.config.ui.audioControls.enabled = true; //<-- Disable to get the browser built in audio controls
+    talkify.config.ui.audioControls.voicepicker.enabled = true;
+    talkify.config.ui.audioControls.container = document.getElementById("player-and-voices");
+    let player = new talkify.TtsPlayer().enableTextHighlighting();
+    var playlist = new talkify.playlist()
+        .begin()
+        .usingPlayer(player)
+        .withTextInteraction()
+        .withElements(document.querySelectorAll('p')) //<--Any element you'd like. Leave blank to let Talkify make a good guess
+        .build();
+    playlist.play();*/
+  }
+
+  getWords() {
+    this.taskpoolService.getWords().subscribe(response => {
+      this.words = response;
+      this.getRandomWords();
+      this.startQuiz();
+      console.log(this.quizzes);
+    })
+  }
+
+  getRandomWords() {
+    for(let i=0; i<10; i++) {
+      let x = Number((Math.random() * (this.words.length - 1)).toFixed(0));
+      this.randomWords.push(this.words[x].word);
+    }
+  }
+
+  startQuiz() {
+    this.randomWords.forEach(randomWord => {
+      this.taskpoolService.getExercise(randomWord).subscribe(quiz => {
+        this.quizzes.push(quiz[0]);
+      })
+    })
+  }
 }
