@@ -16,10 +16,26 @@
             <div class="col-12">
                 <h3>Choose the correct translation for the following sentences: </h3>
             </div>
-            <div class="col-12 md:col-6" *ngFor="let question of quiz">
-                <!--*ngIf="quizzes.length === 10 && quizStarted"-->
-                <app-question [question]="question" (valueResponse)="setResponse($event)"></app-question>
-            </div>
+            <div *ngIf="quizzes.length === 10; else skeletonQuizzes" style="display: flex; flex-wrap: wrap;">
+				<div class="col-12 md:col-6" *ngFor="let question of quizzes">
+					<app-question [question]="question" (valueResponse)="setResponse($event)"></app-question>
+				</div>
+			</div>
+			
+			<ng-template #skeletonQuizzes>
+				<div *ngIf="quizStarted" class="col-12" style="display: flex; flex-wrap: wrap;">
+					<div class="col-12 md:col-6" *ngFor="let question of [].constructor(qtyQuizzes)">
+						<div class="card p-fluid">
+							<div>
+								<p-skeleton width="100%" height="2rem" styleClass="mb-2"></p-skeleton>
+								<p-skeleton width="100%" height="200px"></p-skeleton>
+							</div>		
+							<p-progressBar mode="indeterminate" [style]="{ height: '6px' }"></p-progressBar>
+						</div>
+					</div>
+				</div>
+			</ng-template>
+			
             <div class="col-12">
                 <button pButton label="Get results" (click)="getScore()" (disable)="isLoading"></button>
             </div>
