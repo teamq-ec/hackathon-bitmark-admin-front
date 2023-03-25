@@ -2,7 +2,10 @@
     <div id="sky" class="w-full" [ngClass]="{ 'paused': isPaused }">
       <div id="sea">
         <div id="bern"></div>
-        <div id="tube"></div>
+        <div class="tube-container">
+            <div [ngClass]="{ 'tube-hidde': !isFromQuiz }" id="tube"></div>
+            <div id="tube"></div>
+        </div>
       </div>
     </div>
     <div class="actions">

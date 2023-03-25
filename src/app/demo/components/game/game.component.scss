@@ -7,12 +7,31 @@ html,body {
 .content {
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 
     .actions {
         display: flex;
         justify-content: flex-end;
         margin-top: 180px;
         padding: 0 40px;
+    }
+}
+
+.tube-container {
+    position: absolute;
+    top: -30px;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    animation: movetb var(--tube-animation-duration);
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    width: 70%;
+    left: 45%;
+
+    > .tube-hidde {
+        visibility: hidden;
     }
 }
 
@@ -25,40 +44,38 @@ html,body {
     margin:auto;
     /* Cargamos el sprite (el repeat-x se puede omitir, por defecto se repite) */
     background:url(https://i.imgur.com/ifk0SLH.png) repeat-x;
-    animation:walk .8s steps(6) infinite;
+    animation:walk var(--bern-animation-duration) steps(6) infinite;
     /* Aplicamos la animación "walk": 0.8seg, 6 viñetas y repetimos infinitamente */
     /* Posicionamos el personaje sobre el camino de madera */
     position:relative;
     bottom:34px;
+    z-index: 10;
 }
 
 /* Bernard Bernoulli: Animación del personaje */
 #tube {
-    display: none;
     /* Tamaño de la viñeta individual */
-    width:112px;
-    height:156px;
+    width:141px;
+    height:154px;
     /* Cómo hay establecido un tamaño, centramos con margin:auto */
-    margin:auto;
     /* Cargamos el sprite (el repeat-x se puede omitir, por defecto se repite) */
     background:url(https://art.pixilart.com/4c0fa491bafc087.png) repeat-x;
-    animation: movebg .8s steps(6) infinite;
     /* Aplicamos la animación "walk": 0.8seg, 6 viñetas y repetimos infinitamente */
     /* Posicionamos el personaje sobre el camino de madera */
-    position:relative;
     bottom:34px;
+    background-size: cover;
 }
 
 /* Animación del cielo. Efecto "Parallax", va más lento que el mar. */
 #sky {
     background:url(https://i.imgur.com/PhHVjgw.png) repeat-X;
-    animation: movebg 9s linear infinite;
+    animation: movebg var(--sky-animation-duration) linear infinite;
 }
 
 /* Animación del mar. */
 #sea {
     background:url(https://i.imgur.com/h75XWy8.png) repeat-x;
-    animation: movebg 6s linear infinite;
+    animation: movebg var(--sea-animation-duration) linear infinite;
     /* Posicionamos el mar, para que no solape al cielo */
     position:relative;
     top:145px;
@@ -81,6 +98,10 @@ html,body {
     #sea {
         animation-play-state: paused;
     }
+
+    .tube-container {
+        animation-play-state: paused;
+    }
 }
 
 /* Animación de personaje caminando: Simplemente mueve el sprite sheet hacia la izquierda, realizando el movimiento. */
@@ -95,6 +116,11 @@ html,body {
 @keyframes movebg {
     0% { background-position:550px }
     100% { background-position:0 }
+}
+
+@keyframes movetb {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-85%); }
 }
 
 @keyframes gbwalk {

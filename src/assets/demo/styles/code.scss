@@ -1,10 +1,17 @@
+:root {
+    --sea-animation-duration: 3.1s;
+    --sky-animation-duration: 6s;
+    --tube-animation-duration: 3.95s;
+    --bern-animation-duration: 0.4s;
+}
+
 pre.app-code {
     background-color: var(--surface-ground);
     margin: 0 0 1rem 0;
     padding: 0;
     border-radius: var(--border-radius);
     overflow: auto;
-    
+
     code {
         color: var(--surface-900);
         padding: 1rem;
