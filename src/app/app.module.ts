@@ -3,6 +3,7 @@ import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppLayoutModule } from './layout/app.layout.module';
+import { QuizModule } from './demo/components/quiz/quiz.module';
 
 @NgModule({
     declarations: [
@@ -10,7 +11,8 @@ import { AppLayoutModule } from './layout/app.layout.module';
     ],
     imports: [
         AppRoutingModule,
-        AppLayoutModule
+        AppLayoutModule,
+        QuizModule
     ],
     providers: [
         { provide: LocationStrategy, useClass: PathLocationStrategy }
