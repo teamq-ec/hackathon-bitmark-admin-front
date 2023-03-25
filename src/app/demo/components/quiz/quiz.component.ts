@@ -18,7 +18,7 @@ export class QuizComponent implements OnInit {
     quizStarted: boolean = false;
     isLoading: boolean = false;
     progress: number = 0;
-    showAnswer: boolean = true;
+    showAnswer: boolean = false;
 
     constructor(
       private taskpoolService: TaskpoolService,
