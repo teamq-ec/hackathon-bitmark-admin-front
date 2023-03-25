@@ -1,7 +1,7 @@
-<div>
+<div class="card p-fluid">
     <h4><b>{{question.sourceSentence.text}}</b></h4>
-    <div *ngFor="let option of question.targetSentence.similarWords" class="field-checkbox">
-        <p-radioButton [value]="option" [(ngModel)]="selected" ></p-radioButton>
-        <label [for]="option">{{ option }}</label>
+    <div *ngFor="let option of options" class="field-checkbox">
+        <p-radioButton [value]="option.key" [(ngModel)]="selected" (onClick)="setSelected(option.key, question.sourceSentence.text)" ></p-radioButton>
+        <label [for]="option.key">{{ option.sentence }}</label>
     </div>
 </div>

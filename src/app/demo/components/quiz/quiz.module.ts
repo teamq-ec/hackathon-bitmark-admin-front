@@ -16,6 +16,8 @@ import { InputTextareaModule } from "primeng/inputtextarea";
 import { InputTextModule } from "primeng/inputtext";
 import { QuestionComponent } from './question/question.component';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import { ToastModule } from 'primeng/toast';
+import { MessageModule } from 'primeng/message';
 
 
 @NgModule({
@@ -37,7 +39,9 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 	InputTextareaModule,
 	InputTextModule,
 	RadioButtonModule,
-	QuizRoutingModule
+	QuizRoutingModule,
+	ToastModule,
+	MessageModule,
   ]
 })
 export class QuizModule { }
