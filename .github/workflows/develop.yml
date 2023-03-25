@@ -22,7 +22,7 @@ jobs:
         run: |
           npm install
           npm install -g @angular/cli > /dev/null
-          ng build --base-href --proxy-config proxy.conf.json /
+          ng build --base-href /
       - name: Create artifact
         env:
           GITHUB_SHA: ${{ github.sha }}
