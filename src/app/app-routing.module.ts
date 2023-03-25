@@ -11,10 +11,10 @@ const routes: Routes = [
         path: '', component: AppLayoutComponent,
         children: [
             { path: 'uikit', data: { breadcrumb: 'UI Kit' }, loadChildren: () => import('./demo/components/uikit/uikit.module').then(m => m.UIkitModule) },
+            { path: 'quiz', data: { breadcrumb: 'Quiz' }, loadChildren: () => import('./demo/components/quiz/quiz.module').then(m => m.QuizModule) },
         ]
     },
     { path: 'notfound', loadChildren: () => import('./demo/components/notfound/notfound.module').then(m => m.NotfoundModule) },
-    { path: 'quiz', loadChildren: () => import('./demo/components/quiz/quiz.module').then(m => m.QuizModule) },
     { path: '**', redirectTo: '/notfound' }
 ];
 
