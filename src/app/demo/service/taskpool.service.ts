@@ -5,14 +5,13 @@ import { Injectable, isDevMode } from '@angular/core';
   providedIn: 'root'
 })
 export class TaskpoolService {
-    baseUrl: string = isDevMode() ? '' : 'https://taskpool.taskbase.com/';
 
   constructor(
     private http: HttpClient
   ) { }
 
   getWords() {
-    return this.http.get<any>(this.baseUrl + "api/words?translationPair=de->en", {
+    return this.http.get<any>("api/words?translationPair=de->en", {
         headers: {
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
@@ -21,7 +20,7 @@ export class TaskpoolService {
   }
 
   getExercise(word: any){
-    return this.http.get<any>(this.baseUrl + "api/exercises?translationPair=de->en&word="+word);
+    return this.http.get<any>("api/exercises?translationPair=de->en&word="+word);
   }
 
   getFeedBack(body: any){

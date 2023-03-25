@@ -74,7 +74,7 @@ export class QuizComponent implements OnInit {
         this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Congratulations' });
     } else {
         result.status = 'failed';
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'You failed' });
+        //this.messageService.add({ severity: 'error', summary: 'Error', detail: 'You failed' });
     }
     this.showAnswer = true;
 
