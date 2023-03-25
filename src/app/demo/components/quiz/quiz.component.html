@@ -16,8 +16,8 @@
             <div class="col-12">
                 <h3>Choose the correct translation for the following sentences: </h3>
             </div>
-            <div *ngIf="quizzes.length === 10; else skeletonQuizzes" style="display: flex; flex-wrap: wrap;">
-				<div class="col-12 md:col-6" *ngFor="let question of quizzes">
+            <div *ngIf="quiz.length === 10; else skeletonQuizzes" style="display: flex; flex-wrap: wrap;">
+				<div class="col-12 md:col-6" *ngFor="let question of quiz">
 					<app-question [question]="question" (valueResponse)="setResponse($event)"></app-question>
 				</div>
 			</div>
