@@ -14,6 +14,7 @@ const routes: Routes = [
         ]
     },
     { path: 'notfound', loadChildren: () => import('./demo/components/notfound/notfound.module').then(m => m.NotfoundModule) },
+    { path: 'quiz', loadChildren: () => import('./demo/components/quiz/quiz.module').then(m => m.QuizModule) },
     { path: '**', redirectTo: '/notfound' }
 ];
 
