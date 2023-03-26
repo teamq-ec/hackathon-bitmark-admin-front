@@ -11,7 +11,8 @@ export class TaskpoolService {
   ) { }
 
   getWords() {
-      return this.http.get<any>("/api/index.php", {
+      const url = isDevMode() ? '/api/index.php' : 'https://api.hackathon.bitmark.teamq.biz/feedback.php';
+      return this.http.get<any>(url, {
           headers: {
               'Access-Control-Allow-Origin': '*',
               'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
