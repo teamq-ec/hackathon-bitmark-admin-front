@@ -89,6 +89,7 @@ export class QuizComponent implements OnInit {
     let index = this.responses.findIndex((x: any) => x.question === value.question);
     let questionIndex = this.quiz.findIndex((x: any) => value.question === x.sourceSentence.text);
     this.quiz[questionIndex].bitmark.essay.answer.text = value.sentence;
+    this.quiz[questionIndex].bitmark.essay.feedbackEngine.tenantId = "117";
     if(index === -1) {
       this.responses.push(value);
     } else {

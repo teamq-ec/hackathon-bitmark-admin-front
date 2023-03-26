@@ -1,12 +1,22 @@
 [
-  {
-    "context": ["/api/*"],
-    "target": "https://api.hackathon.bitmark.teamq.biz/",
-    "secure": false,
-    "logLevel": "debug",
-    "changeOrigin": true,
-    "pathRewrite": {
-        "^/api": ""
+    {
+        "context": ["/api/*"],
+        "target": "https://api.hackathon.bitmark.teamq.biz/",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true,
+        "pathRewrite": {
+            "^/api": ""
+        }
+    },
+    {
+        "context": ["/apiFeedBack/*"],
+        "target": "https://api.hackathon.bitmark.teamq.biz/",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true,
+        "pathRewrite": {
+            "^/api": ""
+        }
     }
-  }
 ]
