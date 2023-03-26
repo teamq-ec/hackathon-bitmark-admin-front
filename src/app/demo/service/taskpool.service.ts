@@ -25,12 +25,13 @@ export class TaskpoolService {
   }
 
   getFeedBack(body: any){
+      const url = isDevMode() ? '/apiFeedBack/feedback.php' : 'https://api.hackathon.bitmark.teamq.biz/feedback.php';
     let api_key = "pqsq62oYyilKbG4936Nja-uUqjg";
     const headers = new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${api_key}`
       });
     const requestOptions = { headers: headers };
-    return this.http.post<any>("apiFeedBack/feedback.php", body, requestOptions);
+    return this.http.post<any>(url, body, requestOptions);
   }
 }
