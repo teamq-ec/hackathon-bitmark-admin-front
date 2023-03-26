@@ -11,7 +11,7 @@
   },
   {
     "context": ["/api/*"],
-    "target": "https://taskpool.taskbase.com/",
+    "target": "https://api.hackathon.bitmark.teamq.biz/",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin": true,

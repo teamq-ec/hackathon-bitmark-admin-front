@@ -34,9 +34,11 @@ export class QuizComponent implements OnInit {
     this.randomWords = [];
     this.isLoading = true;
     this.taskpoolService.getWords().subscribe(response => {
-      this.words = response;
-      this.getRandomWords();
-      this.buildQuiz();
+        response.forEach((res: any) => {
+            console.log(res.exercise[0]);
+            this.quiz.push(res.exercise[0]);
+        });
+        this.quizStarted = true;
       this.isLoading = false;
       console.log(this.quiz);
     })
