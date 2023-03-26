@@ -9,9 +9,11 @@
     </div>
 
     <ng-template #showOptions>
-        <div *ngFor="let option of options" class="field-checkbox">
-            <p-radioButton [value]="option.key" [(ngModel)]="selected" (onClick)="setSelected(option.key, question.sourceSentence.text)" ></p-radioButton>
-            <label [for]="option.key">{{ option.sentence }}</label>
+        <div *ngFor="let option of options; let i = index;" class="field-checkbox">
+            <p-radioButton [value]="option.key" [(ngModel)]="selected" 
+                (onClick)="setSelected(option.key, question.sourceSentence.text, option.sentence)" inputId="{{option.key}}option{{i}}">
+            </p-radioButton>
+            <label for="{{option.key}}option{{i}}">{{ option.sentence }}</label>
         </div>
     </ng-template>
 </div>

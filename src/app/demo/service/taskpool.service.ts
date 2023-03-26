@@ -11,15 +11,13 @@ export class TaskpoolService {
   ) { }
 
   getWords() {
-    return this.http.post<any>(
-        "/api/index.php",
-        {},
-        {
-            headers: {
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
-            },
-        });
+      const url = isDevMode() ? '/api/index.php' : 'https://api.hackathon.bitmark.teamq.biz';
+      return this.http.get<any>(url, {
+          headers: {
+              'Access-Control-Allow-Origin': '*',
+              'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+          },
+      });
   }
 
   getExercise(word: string){
@@ -33,6 +31,6 @@ export class TaskpoolService {
         'Authorization': `Bearer ${api_key}`
       });
     const requestOptions = { headers: headers };
-    return this.http.post<any>("apiFeedBack/feedback/compute", body, requestOptions);
+    return this.http.post<any>("apiFeedBack/feedback.php", body, requestOptions);
   }
 }

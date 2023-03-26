@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TaskbaseService } from '../../service/taskbase.service';
+import { TaskpoolService } from '../../service/taskpool.service';
 import { MessageService } from 'primeng/api';
 
 @Component({
@@ -11,7 +11,7 @@ export class SummaryComponent implements OnInit {
     score: number = 0;
     total: number = 0;
 
-    constructor(private taskbaseService: TaskbaseService,
+    constructor(private taskpoolService: TaskpoolService,
                 private messageService: MessageService,) {
 
     }

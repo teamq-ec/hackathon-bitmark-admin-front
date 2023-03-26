@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class QuizComponent implements OnInit {
     words: any = [];
     randomWords: any = [];
-    qtyQuizzes: number = 10;
+    qtyQuizzes: number = 5;
     quiz: any = [];
     responses: any = [];
     result: any = {};
@@ -39,7 +39,7 @@ export class QuizComponent implements OnInit {
           if(res?.exercise?.[0])
             this.quiz.push(res.exercise[0]);
         });
-      if(this.quiz.length !== 10) {
+      if(this.quiz.length !== 5) {
         this.quizStarted = false;
       }
       this.isLoading = false;
@@ -73,7 +73,7 @@ export class QuizComponent implements OnInit {
             result.score += 1;
         }
     });
-    if(result.score > 6) {
+    if(result.score > 3) {
         result.status = 'success';
         this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Congratulations' });
     } else {
@@ -87,7 +87,8 @@ export class QuizComponent implements OnInit {
 
   setResponse(value: any) {
     let index = this.responses.findIndex((x: any) => x.question === value.question);
-    console.log(index);
+    let questionIndex = this.quiz.findIndex((x: any) => value.question === x.sourceSentence.text);
+    this.quiz[questionIndex].bitmark.essay.answer.text = value.sentence;
     if(index === -1) {
       this.responses.push(value);
     } else {
@@ -114,7 +115,7 @@ export class QuizComponent implements OnInit {
             if(quizzes.length >= 3){
                 this.router.navigate(['/summary']);
             }else{
-                this.router.navigate(['/?fromquiz=']);
+                window.location.href = "/#/?fromquiz=";
             }
         }
   }

@@ -31,7 +31,7 @@ export class QuestionComponent implements OnInit {
     }
   }
 
-  setSelected(value: any, question: any) {
-    this.valueResponse.emit({value, question})
+  setSelected(value: any, question: any, sentence: any) {
+    this.valueResponse.emit({value, question, sentence})
   }
 }
