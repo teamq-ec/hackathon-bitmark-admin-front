@@ -13,7 +13,7 @@ export class TaskpoolService {
   getWords() {
     return this.http.post<any>(
         "/api/index.php",
-        {},
+        null,
         {
             headers: {
                 'Access-Control-Allow-Origin': '*',
