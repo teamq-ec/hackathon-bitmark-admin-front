@@ -11,7 +11,7 @@ export class TaskpoolService {
   ) { }
 
   getWords() {
-    return this.http.get<any>("api/words?translationPair=de->en", {
+    return this.http.get<any>("https://api.hackathon.bitmark.teamq.biz", {
         headers: {
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
@@ -19,8 +19,8 @@ export class TaskpoolService {
     });
   }
 
-  getExercise(word: any){
-    return this.http.get<any>("api/exercises?translationPair=de->en&word="+word);
+  getExercise(word: string){
+    return this.http.get<any>("https://api.hackathon.bitmark.teamq.biz");
   }
 
   getFeedBack(body: any){
