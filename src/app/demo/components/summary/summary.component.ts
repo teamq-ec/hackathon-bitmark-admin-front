@@ -44,6 +44,8 @@ export class SummaryComponent implements OnInit {
             })
         }
 
+        localStorage.setItem('mentor_quizzes', quizzesStorage);
+
         localStorage.removeItem('quizzes');
     }
 }

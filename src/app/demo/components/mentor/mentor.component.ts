@@ -4,7 +4,7 @@ import exportFromJSON from 'export-from-json';
     templateUrl: './mentor.component.html'
 })
 export class MentorComponent implements OnInit {
-    quizzes: any = localStorage.getItem('quizzes');
+    quizzes: any = localStorage.getItem('mentor_quizzes');
     isLoading: boolean = false;
 
     ngOnInit() {
@@ -20,7 +20,7 @@ export class MentorComponent implements OnInit {
         const exportType = 'json';
         setTimeout(() => {
             exportFromJSON({ data, fileName, exportType })
-            this.isLoading = false;    
+            this.isLoading = false;
         }, 1000);
       }
 }
