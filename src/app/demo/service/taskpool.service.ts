@@ -33,6 +33,6 @@ export class TaskpoolService {
         'Authorization': `Bearer ${api_key}`
       });
     const requestOptions = { headers: headers };
-    return this.http.post<any>("apiFeedBack/feedback/compute", body, requestOptions);
+    return this.http.post<any>("apiFeedBack/feedback.php", body, requestOptions);
   }
 }

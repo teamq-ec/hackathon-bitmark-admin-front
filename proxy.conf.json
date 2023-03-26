@@ -1,7 +1,7 @@
 [
   {
     "context": ["/apiFeedBack/*"],
-    "target": "https://bitmark-api.taskbase.com/",
+    "target": "https://bitmark-api.taskbase.com/feedback/compute",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin": true,
