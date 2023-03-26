@@ -1,0 +1,22 @@
+[
+  {
+    "context": ["/apiFeedBack"],
+    "target": "https://bitmark-api.taskbase.com/",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "pathRewrite": {
+        "^/apiFeedBack": ""
+    }
+  },
+  {
+    "context": ["/api"],
+    "target": "https://taskpool.taskbase.com/",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "pathRewrite": {
+        "^/api": ""
+    }
+  }
+]

@@ -1,8 +1,7 @@
 import { Component, OnInit, isDevMode } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { TaskpoolService } from '../../service/taskpool.service';
-//declare let talkify: any;
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-quiz',
   templateUrl: './quiz.component.html',
@@ -19,11 +18,12 @@ export class QuizComponent implements OnInit {
     quizStarted: boolean = false;
     isLoading: boolean = false;
     progress: number = 0;
+    showAnswer: boolean = false;
 
-    constructor(private taskpoolService: TaskpoolService,
-      private messageService: MessageService,) {
-
-    }
+    constructor(
+      private taskpoolService: TaskpoolService,
+      private messageService: MessageService,
+      private router:Router){ }
 
   ngOnInit() {
   }
@@ -34,9 +34,11 @@ export class QuizComponent implements OnInit {
     this.randomWords = [];
     this.isLoading = true;
     this.taskpoolService.getWords().subscribe(response => {
-      this.words = response;
-      this.getRandomWords();
-      this.buildQuiz();
+        response.forEach((res: any) => {
+            console.log(res.exercise[0]);
+            this.quiz.push(res.exercise[0]);
+        });
+        this.quizStarted = true;
       this.isLoading = false;
       console.log(this.quiz);
     })
@@ -74,10 +76,11 @@ export class QuizComponent implements OnInit {
         this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Congratulations' });
     } else {
         result.status = 'failed';
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'You failed' });
+        //this.messageService.add({ severity: 'error', summary: 'Error', detail: 'You failed' });
     }
-    this.quizStarted = false;
+    this.showAnswer = true;
 
+    this.saveQuizLocalStorage()
   }
 
   setResponse(value: any) {
@@ -88,5 +91,19 @@ export class QuizComponent implements OnInit {
       this.responses[index] = value;
     }
     this.progress = (this.responses.length)*100/this.quiz.length;
+  }
+
+  saveQuizLocalStorage() {
+    let quizzes = localStorage.getItem('quizzes');
+    let value: any = []
+    if(quizzes) {
+      value = value.concat(JSON.parse(quizzes));
+    }
+    value.push(this.quiz);
+    localStorage.setItem('quizzes', JSON.stringify(value));
+  }
+
+  goToHome(){
+    window.location.href = "/#/?fromquiz=";
   }
 }
