@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TaskbaseService } from '../../service/taskbase.service';
+import { TaskpoolService } from '../../service/taskpool.service';
 import { MessageService } from 'primeng/api';
 
 @Component({
@@ -11,7 +11,7 @@ export class SummaryComponent implements OnInit {
     score: number = 0;
     total: number = 0;
 
-    constructor(private taskbaseService: TaskbaseService,
+    constructor(private taskpoolService: TaskpoolService,
                 private messageService: MessageService,) {
 
     }
@@ -24,10 +24,10 @@ export class SummaryComponent implements OnInit {
         ];
         this.wrongAnswers.forEach((wrongAnswer, index) => {
             // TODO: call feedback service
-            // this.taskbaseService.getFeedback(wrongAnswer.bitmark.essay).subscribe(response => {
-            //     console.log(response);
-            //      this.wrongAnswers[index].feedback = response.feedback
-            // })
+            this.taskpoolService.getFeedBack(wrongAnswer.bitmark.essay).subscribe(response => {
+                console.log(response);
+                 this.wrongAnswers[index].feedback = response.feedback
+            })
             this.wrongAnswers[index].feedback = {"correctness":"WRONG","topic":{"name":""},"message":"Your answer does not match the sample solution.","context":[{"content":"He ordered one menu.","offset":0,"length":20}]};
         })
         this.score = 2;

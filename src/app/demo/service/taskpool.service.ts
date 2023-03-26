@@ -11,16 +11,19 @@ export class TaskpoolService {
   ) { }
 
   getWords() {
-    return this.http.get<any>("api/words?translationPair=de->en", {
-        headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
-        },
-    });
+    return this.http.post<any>(
+        "/api/index.php",
+        {},
+        {
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+            },
+        });
   }
 
-  getExercise(word: any){
-    return this.http.get<any>("api/exercises?translationPair=de->en&word="+word);
+  getExercise(word: string){
+    return this.http.get<any>("https://api.hackathon.bitmark.teamq.biz");
   }
 
   getFeedBack(body: any){
@@ -30,6 +33,6 @@ export class TaskpoolService {
         'Authorization': `Bearer ${api_key}`
       });
     const requestOptions = { headers: headers };
-    return this.http.post<any>("apiFeedBack/feedback/compute", body, requestOptions);
+    return this.http.post<any>("apiFeedBack/feedback.php", body, requestOptions);
   }
 }

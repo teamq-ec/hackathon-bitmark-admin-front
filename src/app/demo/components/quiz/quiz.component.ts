@@ -33,12 +33,16 @@ export class QuizComponent implements OnInit {
     this.words = [];
     this.randomWords = [];
     this.isLoading = true;
+    this.quizStarted = true;
     this.taskpoolService.getWords().subscribe(response => {
-      this.words = response;
-      this.getRandomWords();
-      this.buildQuiz();
+        response.forEach((res: any) => {
+          if(res?.exercise?.[0])
+            this.quiz.push(res.exercise[0]);
+        });
+      if(this.quiz.length !== 10) {
+        this.quizStarted = false;
+      }
       this.isLoading = false;
-      console.log(this.quiz);
     })
   }
 
@@ -82,7 +86,8 @@ export class QuizComponent implements OnInit {
   }
 
   setResponse(value: any) {
-    let index = this.quiz.findIndex((x: any) => x.sourceSentence.text === value.question);
+    let index = this.responses.findIndex((x: any) => x.question === value.question);
+    console.log(index);
     if(index === -1) {
       this.responses.push(value);
     } else {

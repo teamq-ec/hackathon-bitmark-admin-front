@@ -1,7 +1,7 @@
 [
   {
     "context": ["/apiFeedBack/*"],
-    "target": "https://bitmark-api.taskbase.com/",
+    "target": "https://bitmark-api.taskbase.com/feedback/compute",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin": true,
@@ -11,7 +11,7 @@
   },
   {
     "context": ["/api/*"],
-    "target": "https://taskpool.taskbase.com/",
+    "target": "https://api.hackathon.bitmark.teamq.biz/",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin": true,
