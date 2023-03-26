@@ -107,6 +107,15 @@ export class QuizComponent implements OnInit {
   }
 
   goToHome(){
-    window.location.href = "/#/?fromquiz=";
+        const takedQuizzes = localStorage.getItem('quizzes');
+
+        if(takedQuizzes){
+            const quizzes = JSON.parse(takedQuizzes);
+            if(quizzes.length >= 3){
+                this.router.navigate(['/summary']);
+            }else{
+                this.router.navigate(['/?fromquiz=']);
+            }
+        }
   }
 }

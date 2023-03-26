@@ -39,7 +39,7 @@ export class TaskbaseService {
     //     }
     // }
     getFeedback(body: any) {
-        return this.http.post<any>("feedback/compute", body, {
+        return this.http.post<any>("api/feedback.php", body, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer pqsq62oYyilKbG4936Nja-uUqjg'

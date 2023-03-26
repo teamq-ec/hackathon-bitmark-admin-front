@@ -18,20 +18,31 @@ export class SummaryComponent implements OnInit {
 
     ngOnInit() {
         // TODO: update
-        const wa = localStorage.getItem('quizzes');
-        if (wa) {
-            this.wrongAnswers = JSON.parse(wa)[0];
-            console.log(JSON.parse(wa)[0]);
-            this.wrongAnswers.forEach((wrongAnswer, index) => {
-                // TODO: call feedback service
-                // this.taskbaseService.getFeedback(wrongAnswer.bitmark.essay).subscribe(response => {
-                //     console.log(response);
-                //      this.wrongAnswers[index].feedback = response.feedback
-                // })
-                this.wrongAnswers[index].feedback = {"correctness":"WRONG","topic":{"name":""},"message":"Your answer does not match the sample solution.","context":[{"content":"He ordered one menu.","offset":0,"length":20}]};
+        const quizzesStorage = localStorage.getItem('quizzes');
+
+        if (quizzesStorage === null) return;
+
+        const quizzes = JSON.parse(quizzesStorage);
+
+        if (Array.isArray(quizzes)) {
+            (quizzes).forEach((quiz) => {
+                quiz.forEach((answers: any) => {
+                    // TODO: call feedback service
+                    // this.taskbaseService.getFeedback(wrongAnswer.bitmark.essay).subscribe(response => {
+                    //     console.log(response);
+                    //      this.wrongAnswers[index].feedback = response.feedback
+                    // })
+                    answers.feedback = {"correctness":"WRONG","topic":{"name":""},"message":"Your answer does not match the sample solution.","context":[{"content":"He ordered one menu.","offset":0,"length":20}]};
+
+                    if (answers.feedback.correctness !== 'WRONG') {
+                        this.score++
+                    } else {
+                        this.wrongAnswers.push(answers);
+                    }
+
+                    this.total++;
+                })
             })
-            this.score = 2;
-            this.total = 3;
         }
     }
 }

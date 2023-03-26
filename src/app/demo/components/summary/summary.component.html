@@ -19,12 +19,15 @@
                     Your answer: {{wrongAnswer.bitmark.essay.answer.text}}
                 </p>
                 <p class="pl-4 pt-2 my-2 text-lg text-red-500">
-                    {{wrongAnswer.feedback.message}}
+                    {{wrongAnswer.feedback?.message}}
                 </p>
                 <p class="pl-4 pt-2 text-lg text-green-500">
                     Solution: {{wrongAnswer.targetSentence.text}}
                 </p>
             </details>
+        </div>
+        <div class="rating-content">
+            <app-rating [score]="score"></app-rating>
         </div>
     </div>
 </div>
