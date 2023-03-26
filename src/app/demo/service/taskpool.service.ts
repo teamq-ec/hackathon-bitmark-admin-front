@@ -11,15 +11,12 @@ export class TaskpoolService {
   ) { }
 
   getWords() {
-    return this.http.post<any>(
-        "/api/index.php",
-        {},
-        {
-            headers: {
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
-            },
-        });
+      return this.http.get<any>("/api/index.php", {
+          headers: {
+              'Access-Control-Allow-Origin': '*',
+              'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+          },
+      });
   }
 
   getExercise(word: string){
