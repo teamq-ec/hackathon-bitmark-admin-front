@@ -24,27 +24,26 @@ export class SummaryComponent implements OnInit {
 
         const quizzes = JSON.parse(quizzesStorage);
 
+        this.total = quizzes.length * 5;
         if (Array.isArray(quizzes)) {
             (quizzes).forEach((quiz) => {
                 quiz.forEach((answer: any) => {
                     // TODO: call feedback service
                     this.taskpoolService.getFeedBack(answer.bitmark.essay).subscribe(response => {
-                        console.log(response);
+                        console.log(response.feedback)
                         answer.feedback = response.feedback
 
-                        if (answer.feedback.correctness !== 'WRONG') {
+                        if (answer.feedback.length && answer.feedback[0].correctness !== 'WRONG') {
                             this.score++
                         } else {
                             this.wrongAnswers.push(answer);
                         }
 
-                        this.total++;
                     })
-                    // answers.feedback = {"correctness":"WRONG","topic":{"name":""},"message":"Your answer does not match the sample solution.","context":[{"content":"He ordered one menu.","offset":0,"length":20}]};
-
-
                 })
             })
         }
+
+        localStorage.removeItem('quizzes');
     }
 }
