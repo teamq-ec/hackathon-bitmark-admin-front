@@ -63,6 +63,10 @@ export class QuizComponent implements OnInit {
   }
 
   getScore() {
+    if(this.responses.length !== this.quiz.length) {
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'You must response all questions' });
+      return;
+    }
     let result = {
         status: '',
         score: 0,
