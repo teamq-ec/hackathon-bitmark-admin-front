@@ -1,7 +1,8 @@
 name: Pull Request Stats
 on:
-  pull_request:
-    types: [opened]
+  push:
+      branches:
+          - develop
 jobs:
   stats:
     runs-on: ubuntu-latest
